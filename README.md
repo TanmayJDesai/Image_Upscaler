@@ -1,0 +1,1 @@
+Take a blurry image and Upscale it to a better looking one :)

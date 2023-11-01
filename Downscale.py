@@ -18,3 +18,5 @@ def downscaler(source_dir, output_dir):
             image_mapping[filename] = os.path.relpath(output_path, output_dir)
 
     return image_mapping
+
+print("done")

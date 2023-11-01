@@ -18,3 +18,4 @@ def upscaler(source_dir, output_dir):
 
     return image_mapping
 
+print("done")

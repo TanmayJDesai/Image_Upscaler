@@ -13,4 +13,10 @@ for filename in image_filenames:
     downscaled_path = os.path.join(downscaled_output_dir, filename)
     image_pairing[high_res_path] = downscaled_path
 
+print("Pairings for the top 10 images:")
+for i in range(10):
+    high_res_path = list(image_pairing.keys())[i]
+    downscaled_path = image_pairing[high_res_path]
+    print(f"High-Res: {high_res_path}, Downscaled: {downscaled_path}")
+
 print("done")

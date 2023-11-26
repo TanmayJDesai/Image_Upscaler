@@ -16,6 +16,15 @@ test_dir = "/Users/tanmaydesai/Desktop/TestingData"
 #Rewriting the split ratio
 split_ratio = 0.8
 
+
+# 1. pass thru all images, write center cropped versions
+# 2. downsample the CROPPED versions
+# 3. write a torch Dataset object to load a filepath
+# 3.5 --> Dataset obj will hold an array with all filepaths [f1, f2, ..., fN]. Will have code to turn a filepath to a data object
+# 3.75 -> also can do extra preparation like normalization. Should also return a (input, output) pair
+# 4. Build dataloaders *around* these data obj u initialize
+# 5. build your upscaler NN (look on medium) -> output upscaled images.
+
 #Ensure we can work with all data
 image_files = [f for f in os.listdir(source_dir) if f.endswith(".jpg")]
 

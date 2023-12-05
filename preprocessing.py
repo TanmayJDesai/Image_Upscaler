@@ -1,7 +1,6 @@
 from tensorflow.keras.preprocessing import image_dataset_from_directory
 
-dataset_dir = "/Users/tanmaydesai/Desktop/IMAGES"
-root_dir = dataset_dir
+root_dir = "/Users/tanmaydesai/Desktop/IMAGES"
 
 crop_size = 300
 upscale_factor = 3

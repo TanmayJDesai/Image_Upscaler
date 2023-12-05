@@ -12,17 +12,11 @@ Here are some final examples:
 
 Example 1: 
 
-![](Images/0-BAD IMAGE.png)
-![](Images/0-IMAGE AFTER MODEL.png)
 
 Example 2: 
-![](Images/1-BAD IMAGE.png)
-![](Images/1-IMAGE AFTER MODEL.png)
+
 
 Example 3: 
-![](Images/8-BAD IMAGE.png)
-![](Images/8-IMAGE AFTER MODEL.png)
+
 
 Example 4: 
-![](Images/9-BAD IMAGE.png)
-![](Images/9-IMAGE AFTER MODEL.png)

@@ -20,14 +20,11 @@ Final_Paths = sorted(
 )
 
 def process_input_img(INPUT, SIZE):
-    # Convert RGB to YUV color space
     yuv_image = tf.image.rgb_to_yuv(INPUT)
 
-    # Split channels
     last_dimension_axis = len(yuv_image.shape) - 1
     y, u, v = tf.split(yuv_image, 3, axis=last_dimension_axis)
 
-    # Resize the Y channel
     resized_y = tf.image.resize(y, [SIZE, SIZE], method="area")
 
     return resized_y
@@ -78,7 +75,6 @@ def display_enhanced_results(img, prefix, title):
     img_array = img_to_array(img)
     img_array = img_array.astype("float32") / 255.0
 
-    # Create a new figure.
     fig, ax = plt.subplots()
     im = ax.imshow(img_array[::-1], origin="lower")
 
@@ -91,14 +87,12 @@ def display_enhanced_results(img, prefix, title):
 
 
 def generate_lowres_img(img, factor):
-    """Return low-resolution image to use as model input."""
     return img.resize(
         (img.size[0] // factor, img.size[1] // factor),
         PIL.Image.BICUBIC,
     )
 
 def predict_enhanced_image(model, img):
-    """Predict the result based on input image and restore the image as RGB."""
     ycbcr = img.convert("YCbCr")
     y, cb, cr = ycbcr.split()
     y = img_to_array(y)
@@ -126,7 +120,6 @@ class PSNRMonitor(keras.callbacks.Callback):
         super().__init__()
         self.test_img = generate_lowres_img(load_img(Final_Paths[0]), upscale_factor)
 
-    # Store PSNR value in each epoch.
     def on_epoch_begin(self, epoch, logs=None):
         self.psnr = []
 
@@ -140,7 +133,6 @@ class PSNRMonitor(keras.callbacks.Callback):
         self.psnr.append(10 * math.log10(1 / logs["loss"]))
 
 def custom_upscale_model(factor=3, num_channels=1):
-    # Define convolutional layer arguments
     conv_args = {
         "activation": "relu",
         "kernel_initializer": "Orthogonal",
@@ -150,22 +142,16 @@ def custom_upscale_model(factor=3, num_channels=1):
     # Input layer for the model
     inputs = keras.Input(shape=(None, None, num_channels))
 
-    # First convolutional layer with 64 filters and kernel size 5x5
     conv1 = layers.Conv2D(64, 5, **conv_args)(inputs)
 
-    # Second convolutional layer with 64 filters and kernel size 3x3
     conv2 = layers.Conv2D(64, 3, **conv_args)(conv1)
 
-    # Third convolutional layer with 32 filters and kernel size 3x3
     conv3 = layers.Conv2D(32, 3, **conv_args)(conv2)
 
-    # Fourth convolutional layer with (num_channels * factor^2) filters and kernel size 3x3
     conv4 = layers.Conv2D(num_channels * (factor ** 2), 3, **conv_args)(conv3)
 
-    # Upsampling using depth_to_space function
     outputs = tf.nn.depth_to_space(conv4, factor)
 
-    # Create and return the model
     model = keras.Model(inputs, outputs)
     return model
 
@@ -194,5 +180,4 @@ def build_and_train_model(training_set, valid_set, upscale_factor, epochs=100):
 
     model.load_weights(checkpoint_filepath)
 
-# Example usage
 build_and_train_model(training_set, valid_set, upscale_factor)

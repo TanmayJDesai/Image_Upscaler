@@ -1,6 +1,5 @@
 import tensorflow as tf
 from Mapping import test_img_paths
-from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.utils import load_img
 from tensorflow.keras.utils import img_to_array
@@ -102,7 +101,6 @@ def process_and_plot_images(model, img_paths, start, end):
         highres_img = img.resize((w := lowres_input.size[0] * upscale_factor, h := lowres_input.size[1] * upscale_factor))
         prediction = upscale_image_modified(model, lowres_input)
         lowres_img = lowres_input.resize((w, h))
-
 
 
         PSNR += tf.image.psnr(img_to_array(lowres_img), img_to_array(highres_img), max_val=255)

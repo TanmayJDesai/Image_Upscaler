@@ -8,7 +8,6 @@ def scaling(input_image):
 
 dataset = "/Users/tanmaydesai/Desktop/IMAGES"
 
-# List all files ending with ".jpg" in the dataset
 test_img_paths = sorted(
     [
         os.path.join(dataset, fname)

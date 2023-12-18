@@ -19,11 +19,13 @@ This script demonstrates image preprocessing using TensorFlow's image_dataset_fr
 
 # Configuration:
 
+```
 root_dir: The root directory containing the image dataset.
 crop_size: The size to which images are cropped.
 upscale_factor: The factor by which images will be upscaled.
 input_size: The size of the input images after cropping and scaling.
 batch_size: The number of images in each training batch.
+```
 
 ## 2. mapping.py
 

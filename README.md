@@ -105,7 +105,7 @@ Example 3:
 
 ![9-BAD IMAGE](https://github.com/TanmayJDesai/Image_Upscaler/assets/65262891/b8c1ae94-68b5-4f2e-b045-21c305e3c485)
 ![9-IMAGE AFTER MODEL](https://github.com/TanmayJDesai/Image_Upscaler/assets/65262891/7e8bdc06-5f1b-4dfc-aa4d-d990a7c038fa)
-
+--
 
 
 
